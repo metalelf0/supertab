@@ -990,26 +990,26 @@ endfunction " }}}
   " Note: this could cause more problems than it solves if it picks up <s-tab>
   " mappings from other plugins and misinterprets them, etc, so this block is
   " experimental and could be removed later.
-  if g:SuperTabMappingForward ==? '<s-tab>' || g:SuperTabMappingBackward ==? '<s-tab>'
-    let stab = maparg('<s-tab>', 'i')
-    if s:has_dict_maparg
-      let existing_stab = maparg('<s-tab>', 'i', 0, 1)
-      if len(existing_stab) && existing_stab.expr
-        let stab = substitute(stab, '<SID>\c', '<SNR>' . existing_stab.sid . '_', '')
-        let stab = substitute(stab, '()$', '', '')
-        let s:ShiftTab = function(stab)
-        let stab = ''
-      endif
-    endif
-    if stab != ''
-      let stab = substitute(stab, '\(<[-a-zA-Z0-9]\+>\)', '\\\1', 'g')
-      exec "let stab = \"" . stab . "\""
-      let s:ShiftTab = stab
-    endif
-  endif
+  " if g:SuperTabMappingForward ==? '<s-tab>' || g:SuperTabMappingBackward ==? '<s-tab>'
+  "   let stab = maparg('<s-tab>', 'i')
+  "   if s:has_dict_maparg
+  "     let existing_stab = maparg('<s-tab>', 'i', 0, 1)
+  "     if len(existing_stab) && existing_stab.expr
+  "       let stab = substitute(stab, '<SID>\c', '<SNR>' . existing_stab.sid . '_', '')
+  "       let stab = substitute(stab, '()$', '', '')
+  "       let s:ShiftTab = function(stab)
+  "       let stab = ''
+  "     endif
+  "   endif
+  "   if stab != ''
+  "     let stab = substitute(stab, '\(<[-a-zA-Z0-9]\+>\)', '\\\1', 'g')
+  "     exec "let stab = \"" . stab . "\""
+  "     let s:ShiftTab = stab
+  "   endif
+  " endif
 
-  exec 'imap ' . g:SuperTabMappingForward . ' <Plug>SuperTabForward'
-  exec 'imap ' . g:SuperTabMappingBackward . ' <Plug>SuperTabBackward'
+  " exec 'imap ' . g:SuperTabMappingForward . ' <Plug>SuperTabForward'
+  " exec 'imap ' . g:SuperTabMappingBackward . ' <Plug>SuperTabBackward'
 
   if g:SuperTabCrMapping
     let expr_map = 0
